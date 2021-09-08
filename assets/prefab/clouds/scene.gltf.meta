@@ -1,0 +1,26 @@
+{
+  "ver": "2.1.4",
+  "importer": "gltf",
+  "imported": false,
+  "uuid": "553ddf21-b374-4da9-8bf9-99e2c3e08374",
+  "files": [],
+  "subMetas": {},
+  "userData": {
+    "imageMetas": [],
+    "legacyFbxImporter": false,
+    "redirect": "553ddf21-b374-4da9-8bf9-99e2c3e08374@d1932",
+    "assetFinder": {
+      "meshes": [
+        "553ddf21-b374-4da9-8bf9-99e2c3e08374@bcca5"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [
+        "553ddf21-b374-4da9-8bf9-99e2c3e08374@913b0"
+      ],
+      "scenes": [
+        "553ddf21-b374-4da9-8bf9-99e2c3e08374@d1932"
+      ]
+    }
+  }
+}
