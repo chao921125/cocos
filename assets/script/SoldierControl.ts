@@ -1,7 +1,7 @@
 /**
  * 角色控制
  */
-import { _decorator, Component, Node, systemEvent, SystemEvent, EventMouse, Vec3 } from 'cc';
+import { _decorator, Component, Node, systemEvent, SystemEvent, EventMouse, Vec3, Animation } from 'cc';
 const { ccclass, property } = _decorator;
 
 /**
@@ -18,51 +18,121 @@ const { ccclass, property } = _decorator;
  
 @ccclass('SoldierControl')
 export class SoldierControl extends Component {
-    // [1]
-    // dummy = '';
+    @property({ type: Animation })
+    jumpAnim: Animation | null = null!;
+
     // 是否开始跳跃
-    private isJumpStart = false;
+    private isJumpStart: boolean = false;
+    private isJumpMoving: boolean = false;
     // 跳跃步长
-    private jumpStep = 0;
+    private jumpStep: number = 0;
     // 跳跃时间
-    private jumpTimeCurrent = 0;
-    private jumpTIme = 0.1;
+    private jumpTimeCurrent: number = 0;
+    private jumpTime: number = 0.4;
     // 速度
-    private jumpSpeedCurrent = 0;
+    private jumpSpeedCurrent: number = 0;
+    private jumpSpeed: number = 2;
     // 位置
     private jumpPositionCurrent = new Vec3();
     private jumpPositionTarget = new Vec3();
+    private jumpDeltaPosition = new Vec3();
+    // 当前任务所在索引位置
+    private jumpPositionIndex: number = 0;
 
     // [2]
     // @property
     // serializableDummy = 0;
 
     // 创建
-    onEnable () {}
+    onEnable() {}
     // 执行一次
-    start () {
+    start() {
         // systemEvent.addEventListener
-        systemEvent.on(SystemEvent.EventType.MOUSE_UP, this.onMouseUp, this);
+        // systemEvent.on(SystemEvent.EventType.MOUSE_UP, this.onMouseUp, this);
     }
     // 
-    update () {}
-    lastUpdate () {}
+    update(deltaTime: number) {
+        this.fnJumpStart(deltaTime);
+    }
+    lastUpdate() {}
     // 禁用
-    onDisable () {}
+    onDisable() {}
     // 销毁
-    onDestroy () {}
+    onDestroy() {}
 
-    onMouseUp (event: EventMouse) {
+    setInputActive(active: boolean) {
+        if (active) {
+            systemEvent.on(SystemEvent.EventType.MOUSE_UP, this.onMouseUp, this);
+        } else {
+            systemEvent.off(SystemEvent.EventType.MOUSE_UP, this.onMouseUp, this);
+        }
+    }
+    
+    // 鼠标点击
+    onMouseUp(event: EventMouse) {
         if (event.getButton() === 0) {
             this.fnJumpStep(1);
         } else if (event.getButton() === 2) {
             this.fnJumpStep(2);
+        } else {
+            console.log("无效点击");
         }
     }
-    fnJumpStep (step: Number) {
+    
+    // 设置步长
+    fnJumpStep(step: number) {
+        // 并发如果多次点击且当前未执行结束，那么返回
+        if (this.isJumpMoving) {
+            return false;
+        }
+        // 初始化跳跃
         this.isJumpStart = true;
+        // 获取步长
         this.jumpStep = step;
+        // 当前跳跃速度 = 步长 / 跳跃时间
         this.jumpSpeedCurrent = this.jumpStep / this.jumpTime;
+        // 当前跳跃时间重置
+        this.jumpTimeCurrent = 0;
+        // 获取当前节点位置信息
+        this.node.getPosition(this.jumpPositionCurrent);
+        // 步长及当前位置设置进去
+        Vec3.add(this.jumpPositionTarget, this.jumpPositionCurrent, new Vec3(this.jumpStep, 0, 0));
+        // 获取当前动画效果
+        if (this.jumpAnim) {
+            this.jumpAnim.getState("jump01").speed = this.jumpSpeed;
+            this.jumpAnim.play("jump01");
+        }
+        this.jumpPositionIndex += step;
+    }
+
+    fnJumpStart(deltaTime: number) {
+        if (this.isJumpStart) {
+            this.jumpTimeCurrent += deltaTime;
+            if (this.jumpTimeCurrent > this.jumpTime) {
+                this.node.setPosition(this.jumpPositionTarget);
+                this.isJumpStart = false;
+                this.fnJumpEnd();
+            } else {
+                this.node.getPosition(this.jumpPositionCurrent);
+                this.jumpDeltaPosition.x = this.jumpSpeedCurrent * deltaTime;
+                Vec3.add(this.jumpPositionCurrent, this.jumpPositionCurrent, this.jumpDeltaPosition);
+                this.node.setPosition(this.jumpPositionCurrent);
+            }
+        }
+    }
+    fnJumpEnd() {
+        this.isJumpMoving = false;
+        // 结束跳跃动作
+        if (this.jumpAnim) {
+            this.jumpAnim.play("idle02");
+            this.node.emit("jumpEnd", this.jumpPositionIndex);
+        }
+    }
+
+    // 重置信息
+    resetAll() {
+        this.node.setPosition(-6.429, 0.652, 0.105);
+        this.jumpPositionIndex = 0;
     }
 }
 
