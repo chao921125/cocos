@@ -74,8 +74,6 @@ export class SoldierControl extends Component {
             this.fnJumpStep(1);
         } else if (event.getButton() === 2) {
             this.fnJumpStep(2);
-        } else {
-            console.log("无效点击");
         }
     }
     
@@ -85,6 +83,7 @@ export class SoldierControl extends Component {
         if (this.isJumpMoving) {
             return false;
         }
+        this.isJumpMoving = true;
         // 初始化跳跃
         this.isJumpStart = true;
         // 获取步长

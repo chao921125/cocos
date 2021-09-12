@@ -29,6 +29,13 @@ temp：临时文件目录
 package.json：项目配置
 ```
 
+# 制作开屏页等等非游戏内页面
+```
+1、创建Canvas
+2、Canvas内部创建Node
+3、Node内部创建Sprite，适配Node大小的时候需要创建一个Widget
+```
+
 # 摇杆
 1、摇杆的初始化位置，相对于web \
 2、固定范围内控制，监听移动等等 \
