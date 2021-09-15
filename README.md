@@ -2,19 +2,25 @@
 cocos基础学习
 
 1、保持我们的脚本文件名大写
-2、注意资源归类，避免资源混用
+2、注意资源归类，避免资源混用（可以根据功能或者类型区分）
 
 ```
 assets：资源目录
     scene：场景
-    material：材质 一般是给地图等等渲染
-    prefab：预制-模型
-    texture：预制-模型-质地
+    
+    res：使用资源
+    resources：动态加载资源loader加载
+    
     script：脚本
-    animation：动画
+    material：场景背景图等等（此项可以和model合并）
+    model：设计的人物模型等等
+    prefab：预制-模型，无需动态加载的预制体
+    texture：预制-模型-质地，一些贴图资源
+    animation：动画文件
     font：字体
     audio：音频
     particle：粒子特效
+    
 
 build：构建目录（在构建某平台后会生成该目录）
 
