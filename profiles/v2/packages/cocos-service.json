@@ -1,0 +1,20 @@
+{
+  "options": {
+    "web-desktop": {
+      "configID": "3523a1",
+      "services": []
+    },
+    "android": {
+      "configID": "3523a1",
+      "services": []
+    },
+    "web-mobile": {
+      "configID": "3523a1",
+      "services": []
+    }
+  },
+  "builder-options": {
+    "configID": "3523a1",
+    "services": []
+  }
+}
