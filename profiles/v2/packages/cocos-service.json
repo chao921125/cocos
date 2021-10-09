@@ -1,0 +1,65 @@
+{
+  "__version__": "3.0.0",
+  "options": {
+    "web-desktop": {
+      "configID": "797b0e",
+      "services": [
+        {
+          "service_id": "235",
+          "service_component_name": "service-analytics",
+          "builder": "/Users/yangweida/.CocosCreator/.service/analytics/builder/builder.js",
+          "enable": false,
+          "params": {}
+        }
+      ]
+    },
+    "wechatgame": {
+      "configID": "797b0e",
+      "services": [
+        {
+          "service_id": "235",
+          "service_component_name": "service-analytics",
+          "builder": "/Users/yangweida/.CocosCreator/.service/analytics/builder/builder.js",
+          "enable": false,
+          "params": {}
+        }
+      ]
+    },
+    "android": {
+      "configID": "797b0e",
+      "services": [
+        {
+          "service_id": "235",
+          "service_component_name": "service-analytics",
+          "builder": "/Users/yangweida/.CocosCreator/.service/analytics/builder/builder.js",
+          "enable": false,
+          "params": {}
+        }
+      ]
+    },
+    "web-mobile": {
+      "configID": "797b0e",
+      "services": [
+        {
+          "service_id": "235",
+          "service_component_name": "service-analytics",
+          "builder": "/Users/yangweida/.CocosCreator/.service/analytics/builder/builder.js",
+          "enable": false,
+          "params": {}
+        }
+      ]
+    }
+  },
+  "builder-options": {
+    "configID": "797b0e",
+    "services": [
+      {
+        "service_id": "235",
+        "service_component_name": "service-analytics",
+        "builder": "/Users/yangweida/.CocosCreator/.service/analytics/builder/builder.js",
+        "enable": false,
+        "params": {}
+      }
+    ]
+  }
+}
