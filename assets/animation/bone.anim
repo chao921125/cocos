@@ -1,0 +1,47 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "bone",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 1,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 2,
+  "curveData": {
+    "props": {
+      "position": [
+        {
+          "frame": 0,
+          "value": [
+            499,
+            639
+          ],
+          "curve": [
+            0.1125354843547471,
+            0.7329537623235602,
+            0.546423146163068,
+            0.8423448806413696
+          ],
+          "motionPath": []
+        },
+        {
+          "frame": 0.016666666666666666,
+          "value": [
+            499.855,
+            -4.588,
+            0
+          ]
+        },
+        {
+          "frame": 1,
+          "value": [
+            499.855,
+            -4.588,
+            0
+          ]
+        }
+      ]
+    }
+  },
+  "events": []
+}
