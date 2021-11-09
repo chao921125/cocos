@@ -1,0 +1,1 @@
+module.exports = {"__type__":"cc.Material","_name":"builtin-clear-stencil","_effectAsset":{"__uuid__":"c0BAyVxX9JzZy8EjFrc9DU"},"_techniqueData":{}};

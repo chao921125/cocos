@@ -1,0 +1,1 @@
+module.exports = {"__type__":"cc.Material","_name":"builtin-2d-sprite","_effectAsset":{"__uuid__":"28dPjdQWxEQIG3VVl1Qm6T"},"_techniqueData":{"0":{"defines":{"USE_TEXTURE":true}}}};

@@ -1,0 +1,1 @@
+module.exports = {"__type__":"cc.Texture2D","content":"0,9729,9729,33071,33071,0,0,1"};

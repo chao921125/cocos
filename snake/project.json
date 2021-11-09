@@ -1,0 +1,8 @@
+{
+  "engine": "cocos-creator-js",
+  "packages": "packages",
+  "name": "snake",
+  "id": "aa4b9738-c52a-4f38-9bd3-c5e923dadf11",
+  "version": "2.4.6",
+  "isNew": false
+}
